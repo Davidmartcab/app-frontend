@@ -1,0 +1,18 @@
+<div class="addcontact">
+    <div class="addcontact__container">
+        <div class="addcontact__container__header">
+            <div></div>
+            <div>Add new contact</div>
+            <div class="addcontact__container__header__close" (click)="closeModal()">+</div>
+        </div>
+        <div class="addcontact__container__content">
+            <div class="addcontact__container__content__select">
+                <div *ngFor="let con of modalService.users" class="addcontact__container__content__select__item" (click)="select(con)" [ngClass]="selected === con ? 'selected' : 'nonselected'">
+                    {{con.length > 20 ? con.substring(0, 20) + '...' : con}}
+                </div>
+            </div>
+
+            <div class="addcontact__container__content__button" (click)="sendStartChat()">Abrir</div>
+        </div>
+    </div>
+</div>

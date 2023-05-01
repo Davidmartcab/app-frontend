@@ -1,0 +1,10 @@
+<div class="login" (keydown.enter)="login()">
+    <div class="login__header">
+        Login
+    </div>
+    <div class="login__content">
+        <label for="name" class="login__content__text">Name</label>
+        <input type="text" class="login__content__input" id="name" [(ngModel)]="name" />
+        <input type="submit" class="login__content__button" (click)="login()"  value="Entrar"/>
+    </div>
+</div>

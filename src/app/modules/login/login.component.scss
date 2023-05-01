@@ -1,0 +1,70 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    // background color dark marine blue
+    background-color: #0a192f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__header {
+        width: 50vw;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 2.5rem;
+        border-radius: 24px;
+        box-shadow: 0 0 10px 0 rgba(255, 255, 255, 1);
+    }
+    
+    &__content {
+        width: 50vw;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+        border-radius: 24px;
+        box-shadow: 0 0 10px 0 rgba(255, 255, 255, 1);
+
+        &__text {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        &__input {
+            width: 50%;
+            height: 5vh;
+            border-radius: 24px;
+            border: none;
+            outline: none;
+            padding: 0 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        &__button {
+            width: 50%;
+            height: 5vh;
+            border-radius: 24px;
+            border: none;
+            outline: none;
+            padding: 0 1rem;
+            font-size: 1.5rem;
+            background-color: #64ffda;
+            color: #0a192f;
+            cursor: pointer;
+            
+            &:hover {
+                background-color: #00bfa5;
+                box-shadow: 0 0 10px 0 rgba(255, 255, 255, .2);
+            }
+        }
+    }
+
+}

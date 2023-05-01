@@ -1,0 +1,42 @@
+<div class="home">
+    <div class="home__header">
+        <div class="home__header__space"></div>
+        <div class="home__header__text">Bienvenido <span class="home__header__text__resalt">{{userName.length > 30 ? userName.substring(0, 30) + '...' : userName}}</span></div>
+        <div class="home__header__space">
+            <button class="home__header__button" (click)="logout()">LogOut</button>
+        </div>
+    </div>
+
+    <div class="home__content">
+        <div class="home__content__sidenav">
+            <div class="home__content__sidenav__newcontact" (click)="openModal()">
+                <div class="home__content__sidenav__newcontact__close">+</div>
+                Add new contact
+            </div>
+            <div class="home__content__sidenav__contactslist">
+                <div class="home__content__sidenav__contactslist__contact" (click)="getChat(contact)" *ngFor="let contact of contacts" [ngClass]="contactSelected === contact ? 'selected':'nonselected'">
+                    {{contact.length > 20 ? contact.substring(0, 20) + '...' : contact}}
+                </div>
+            </div>
+        </div>
+        <div class="home__content__chat">
+            <div class="home__content__chat__container" id="chat" (click)="focusInput()">
+                <div class="home__content__chat__container__message" *ngFor="let message of chat, let i = index"  [ngClass]="message.from === userName ? 'left' : 'right'">
+                    <div class="home__content__chat__container__message__text">
+                        {{message.message}}
+                    </div>
+                    <div class="home__content__chat__container__message__date">
+                        {{getDate(message.date)}}
+                    </div>
+                </div>
+            </div>
+            <div class="home__content__chat__input">
+                <input id="inputMessage" type="text" class="home__content__chat__input__input" [(ngModel)]="newMessage"  (keydown.enter)="sendMessage()">
+                <button class="home__content__chat__input__button" (click)="sendMessage()">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="modalService.open">
+    <app-addcontact (sendMessage)="sendMessage($event)"></app-addcontact>
+</div>
