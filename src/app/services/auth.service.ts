@@ -35,7 +35,9 @@ export class AuthService {
   login(name: string, codex?: number) {
     let code: number = -1;
     this.http.newUser(name).subscribe((res) => {
+      console.log("Login",res);
       code = res.code;
+      if(res.user.connected)code = 3;
       this.user.setValues(res.user._id, res.user.name);
       if(code === 0 || code === 1){
         if(codex && code === 0) {
@@ -57,6 +59,11 @@ export class AuthService {
   }
 
   logout() {
+    console.log("Logout",this.user.name);
+    this.http.logOutUser(this.user.name).subscribe((res) => {
+      this.router.navigate(['/login']);
+      localStorage.removeItem('user');
+    });
     this.user.setValues('', '');
     this.router.navigate(['/login']);
     localStorage.removeItem('user');

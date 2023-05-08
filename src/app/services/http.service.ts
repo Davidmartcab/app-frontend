@@ -9,13 +9,13 @@ import { Message } from '../models/message.model';
 })
 export class HttpService {
 
-  url = 'http://192.168.1.100:4000';
+  url = 'http://' + window.location.hostname + ':4000';
   // url = 'http://localhost:4000';
 
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {}
 
   newUser(name: string): Observable<Login> {
     return this.http.post<Login>(this.url + '/user/new', {name: name})
@@ -47,6 +47,10 @@ export class HttpService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url)
+  }
+
+  logOutUser(name: string): Observable<Login> {
+    return this.http.get<Login>(this.url + '/user/logout/' + name)
   }
 }
 
