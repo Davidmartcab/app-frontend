@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="home__content__chat__input">
-                <input id="inputMessage" type="text" class="home__content__chat__input__input" [(ngModel)]="newMessage"  (keydown.enter)="sendMessage()">
+                <input id="inputMessage" type="text" class="home__content__chat__input__input" [(ngModel)]="newMessage" maxlength="100"  (keydown.enter)="sendMessage()">
                 <button class="home__content__chat__input__button" (click)="sendMessage()">Enviar</button>
             </div>
         </div>
